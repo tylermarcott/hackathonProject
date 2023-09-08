@@ -1,3 +1,4 @@
+import { Auth0Provider } from "@bcwdev/auth0provider"
 import { dogService } from "../services/DogService.js"
 import BaseController from "../utils/BaseController.js"
 import { Logger } from "../utils/Logger.js"
@@ -10,9 +11,9 @@ export class DogController extends BaseController {
 
             // middleware goes here
 
-
-            .post('', this.createDog)
             .get('', this.getDogs)
+            .use(Auth0Provider.getAuthorizedUserInfo)
+            .post('', this.createDog)
     }
 
     // TODO: put populate account back in once we get this fixed.
