@@ -4,6 +4,9 @@ import { isValidProp } from './utils/IsValidProp.js'
 import { loadState } from './utils/Store.js'
 
 class ObservableAppState extends EventEmitter {
+
+  dog = []
+  activeDog = null
   page = ''
   user = null
   /** @type {import('./models/Account.js').Account | null} */
