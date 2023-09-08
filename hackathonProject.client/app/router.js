@@ -13,11 +13,10 @@ export const router = [
     path: '',
     controller: DogsController,
     view: /*html*/`
-    <div class="card">
-      <div class="card-body">
-        <p>Home Page</p>
-        <button class="btn btn-dark" onclick="app.HomeController.testButton()">😎</button>
-      </div>
+    <div class="container-fluid">
+    <section class="row" id="dogsList">
+
+    </section>
     </div>
     `
   },
