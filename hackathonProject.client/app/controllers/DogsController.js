@@ -2,14 +2,22 @@ import { AppState } from "../AppState.js"
 import { dogsService } from "../services/DogsService.js"
 import { getFormData } from "../utils/FormHandler.js"
 import { Pop } from "../utils/Pop.js"
+import { setHTML } from "../utils/Writer.js"
+function _drawDogs() {
+  let content = ``
+  AppState.dogs.forEach(dog => content += dog.dogTemplate)
+  setHTML('dogsList', content)
+}
 
+function _drawActiveDog() {
 
-
-
-
+  setHTML('active-Dog', AppState.activeDog.activeTemplate)
+}
 export class DogsController {
   constructor() {
+    AppState.on('dogs', _drawDogs)
     AppState.on('account', this.getDogs)
+    AppState.on('activeDog', _drawActiveDog)
     console.log('This is the thing Dogs')
   }
 
@@ -31,5 +39,9 @@ export class DogsController {
     } catch (error) {
       Pop.error(error)
     }
+  }
+
+  setActiveDog(dogId) {
+    dogsService.setActiveDog(dogId)
   }
 }

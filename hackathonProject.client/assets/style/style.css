@@ -13,7 +13,9 @@ body {
     background-color: var(--off-white);
     font-family: 'Marvel', sans-serif;
     color: var(--dark-blue);
+    height: 200vh;
 }
+
 
 .card {
     background-color: var(--yellow);
@@ -27,16 +29,33 @@ body {
     color: var(--dark-blue);
 }
 
-.title-navbar {
-    background-color: var(--dark-blue);
+.navbar {
+    background-color: var(--dark-blue) !important;
     font-family: 'Bangers', cursive;
-    color: var(--red);
 
+    padding: 1rem;
 }
 
-.createBtn{
+#nav-title {
+    color: var(--red) !important;
+}
+
+.createBtn {
     background-color: #3bb13f;
     color: var(--off-white);
+}
+
+.create-button {
+    position: sticky;
+    width: 100px;
+    height: 100px;
+    left: 90vw;
+    bottom: 50px;
+    margin: 50px;
+}
+
+.dog-card:hover {
+    cursor: pointer;
 }
 
 /* UTILITY CLASSES */
@@ -62,7 +81,7 @@ body {
 }
 
 .bg-yellow {
-    color: var(--yello; )
+    color: var(--yellow);
 }
 
 .bg-blue {
