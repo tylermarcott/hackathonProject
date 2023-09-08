@@ -1,1 +1,78 @@
 /* BASIC STYLES HERE */
+:root {
+    --dark-red: #902724;
+    --red: #f23c27;
+    --yellow: #f7d281;
+    --blue: #1b729f;
+    --dark-blue: #1a323e;
+    --off-white: #f5f5f5;
+
+}
+
+body {
+    background-color: var(--off-white);
+    font-family: 'Marvel', sans-serif;
+    color: var(--dark-blue);
+}
+
+.card {
+    background-color: var(--yellow);
+    border: var(--blue);
+    color: var(--dark-blue);
+}
+
+.large-card {
+    background-color: var(--yellow);
+    border: var(--blue);
+    color: var(--dark-blue);
+}
+
+.title-navbar {
+    background-color: var(--dark-blue);
+    font-family: 'Bangers', cursive;
+    color: var(--red);
+
+}
+
+.createBtn{
+    background-color: #3bb13f;
+    color: var(--off-white);
+}
+
+/* UTILITY CLASSES */
+
+.shadow {
+    box-shadow: 0 0 12px 0 hsla(rgba(0, 0, 0, 0.366));
+}
+
+.bangersFont {
+    font-family: 'Bangers', cursive;
+}
+
+.marvelFont {
+    font-family: 'Marvel', sans-serif;
+}
+
+.bg-drkRed {
+    color: var(--dark-red);
+}
+
+.bg-red {
+    color: var(--red);
+}
+
+.bg-yellow {
+    color: var(--yello; )
+}
+
+.bg-blue {
+    color: var(--blue);
+}
+
+.bg-drkblue {
+    color: var(--dark-blue);
+}
+
+.bg-offwhite {
+    color: var(--off-white);
+}
