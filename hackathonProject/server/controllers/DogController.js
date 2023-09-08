@@ -37,4 +37,16 @@ export class DogController extends BaseController {
             next(error)
         }
     }
+
+    async editDog(request, response, next) {
+        try {
+            const updates = request.body
+            const dogId = request.params.dogId
+            const editedDog = await dogService.editDog(dogId, updates)
+            response.send(editedDog)
+
+        } catch (error) {
+            next(error)
+        }
+    }
 }
