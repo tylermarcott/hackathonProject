@@ -3,7 +3,7 @@ import { dbContext } from "../db/DbContext.js"
 
 class DogService {
     async getDogs(query) {
-        const dogs = await dbContext.Dogs.find(query).populate('account')
+        const dogs = await dbContext.Dogs.find(query)
         return dogs
     }
 
