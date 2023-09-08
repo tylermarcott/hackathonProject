@@ -13,8 +13,15 @@ class DogService {
         return newDog
     }
 
-    async editDog(dogId, udpated) {
-        const editDog = await dbContext.Dogs.findById()
+    async editDog(dogId, updates) {
+        const originalDog = await dbContext.Dogs.findById(dogId)
+
+        if (!originalDog) throw new Error('Unable to find dog at the following id: ${dogId}')
+
+        originalDog.description = updates.description
+
+        await originalDog.save()
+        return originalDog
     }
 
 }
