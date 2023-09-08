@@ -15,7 +15,7 @@ export class DogController extends BaseController {
     }
     async getDogs(req, res, next) {
         try {
-            const dogs = await dogService.getDogs()
+            const dogs = await dogService.getDogs(req.query)
             res.send(dogs)
         } catch (error) {
             next(error)
