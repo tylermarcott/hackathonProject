@@ -14,6 +14,8 @@ export class DogController extends BaseController {
             .post('', this.createDog)
             .get('', this.getDogs)
     }
+
+    // TODO: put populate account back in once we get this fixed.
     async getDogs(req, res, next) {
         try {
             const query = req.query
