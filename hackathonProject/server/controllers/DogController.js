@@ -27,7 +27,7 @@ export class DogController extends BaseController {
     async createDog(request, response, next) {
         try {
             const body = request.body
-            body.reporterId = request.userInfo.id
+            body.accountId = request.userInfo.id
             const dog = await dogService.createDog(body)
             response.send(dog)
         } catch (error) {
