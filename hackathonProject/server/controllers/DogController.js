@@ -11,11 +11,21 @@ export class DogController extends BaseController {
 
 
             .post('', this.createDog)
+            .get('', this.getDogs)
     }
+    async getDogs(req, res, next) {
+        try {
+            const dogs = await dogService.getDogs(req.query)
+            res.send(dogs)
+        } catch (error) {
+            next(error)
+        }
+    }
+
     async createDog(request, response, next) {
         try {
             const body = request.body
-            // body.reporterId = request.userInfo.id
+            body.reporterId = request.userInfo.id
             const dog = await dogService.createDog(body)
             response.send(dog)
         } catch (error) {
