@@ -11,7 +11,7 @@ export const DogSchema = new Schema({
 }, { timestamps: true, toJSON: { virtuals: true } })
 
 DogSchema.virtual('account', {
-    localField: 'accountId',
+    localField: 'acountId',
     ref: 'Account',
     foreignField: '_id',
     justOne: true
