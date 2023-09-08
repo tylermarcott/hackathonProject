@@ -5,7 +5,7 @@ import { loadState } from './utils/Store.js'
 
 class ObservableAppState extends EventEmitter {
 
-  dog = []
+  dogs = []
   activeDog = null
   page = ''
   user = null
