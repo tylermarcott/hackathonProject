@@ -1,9 +1,9 @@
-import { AppState } from "../AppState"
+import { AppState } from "../AppState.js"
 
 class DogsService {
-  async createDog() {
-    const dog = AppState.dog.
-  }
+  // async createDog() {
+  //   const dog = AppState.dog.
+  // }
 }
 
 export const dogsService = new DogsService()

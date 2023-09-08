@@ -18,11 +18,11 @@ export class DogsController {
     }
   }
 
-  async createDog() {
-    try {
-      const newDog = await dogsService.createDog()
-    } catch (error) {
-      Pop.error(error)
-    }
-  }
+  // async createDog() {
+  //   try {
+  //     const newDog = await dogsService.createDog()
+  //   } catch (error) {
+  //     Pop.error(error)
+  //   }
+  // }
 }
