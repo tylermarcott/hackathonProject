@@ -6,6 +6,7 @@ class DogService {
         const dogs = await dbContext.Dogs.find(query).populate('Account')
         return dogs
     }
+
     async createDog(body) {
         const newDog = await dbContext.Dogs.create(body)
         return newDog

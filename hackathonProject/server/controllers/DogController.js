@@ -1,5 +1,6 @@
 import { dogService } from "../services/DogService.js"
 import BaseController from "../utils/BaseController.js"
+import { Logger } from "../utils/Logger.js"
 
 
 export class DogController extends BaseController {
@@ -15,7 +16,8 @@ export class DogController extends BaseController {
     }
     async getDogs(req, res, next) {
         try {
-            const dogs = await dogService.getDogs(req.query)
+            const query = req.query
+            const dogs = await dogService.getDogs(query)
             res.send(dogs)
         } catch (error) {
             next(error)
