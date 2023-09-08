@@ -15,6 +15,8 @@ export class DogController extends BaseController {
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createDog)
     }
+
+    // TODO: put populate account back in once we get this fixed.
     async getDogs(req, res, next) {
         try {
             const query = req.query
