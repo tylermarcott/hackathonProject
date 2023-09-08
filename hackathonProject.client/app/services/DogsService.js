@@ -4,8 +4,8 @@ import { api } from "./AxiosService.js"
 class DogsService {
 
   async getDogs() {
-    const res = api.get('api/dogs')
-    AppState.dogs.map(dog => new Dog(dog))
+    const res = await api.get('api/dogs')
+    AppState.dogs = res.data.map(dog => new Dog(dog))
     console.log(res.data, 'Got the Dogs')
   }
 
@@ -13,6 +13,12 @@ class DogsService {
     const res = api.post('api/dogs', formData)
     AppState.dogs.push(new Dog(res.data))
     console.log('made a new dog')
+    console.log(AppState.dogs)
+  }
+
+  setActiveDog(dogId) {
+    let foundDog = AppState.dogs.find(dog => dog.id == dogId)
+    AppState.activeDog = foundDog
   }
 }
 

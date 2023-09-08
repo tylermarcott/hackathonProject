@@ -15,7 +15,7 @@ export const router = [
     view: /*html*/`
     <div class="container-fluid">
     <section class="row" id="dogsList">
-
+  
     </section>
     </div>
     `
