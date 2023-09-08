@@ -13,5 +13,6 @@
             ],
             "program": "${workspaceFolder}/index.js"
         }
+        "peacock.color": "#f1f921"
     ]
 }
