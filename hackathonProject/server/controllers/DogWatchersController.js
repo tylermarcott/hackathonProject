@@ -11,14 +11,14 @@ export class DogWatchersController extends BaseController {
             .get('', this.getDogWatcher)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createDogWatcher)
-            .put('/:watcherId', this.editDogWatcher)
-            .delete('', this.removeDogWatcher)
+            .put('/:dogWatcherId', this.editDogWatcher)
+            .delete('/:dogWatcherId', this.removeDogWatcher)
     }
     async removeDogWatcher(request, response, next) {
         try {
-            const watcherId = request.params.watcherId
+            const dogWatcherId = request.params.dogWatcherId
             const message = await dogWatcherService.removeDogWatcher
-                (watcherId, request.userInfo)
+                (dogWatcherId, request.userInfo)
             response.send(message)
         } catch (error) {
             next(error)
@@ -45,10 +45,10 @@ export class DogWatchersController extends BaseController {
             next(error)
         }
     }
-    async editDogWatcher(response, request, next) {
+    async editDogWatcher(request, response, next) {
         try {
             const updates = request.body
-            const watcherId = request.params.accountId
+            const watcherId = request.params.dogWatcherId
             const editedDog = await dogWatcherService.editDogWatcher(watcherId, updates)
             response.send(editedDog)
         } catch (error) {
