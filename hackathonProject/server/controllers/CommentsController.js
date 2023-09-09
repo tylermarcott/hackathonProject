@@ -6,7 +6,7 @@ import { commentsService } from "../services/CommentsService.js";
 
 export class CommentsController extends BaseController {
     constructor() {
-        super('api/dogs')
+        super('api/comments')
         this.router
             .get('', this.getComments)
             .use(Auth0Provider.getAuthorizedUserInfo)

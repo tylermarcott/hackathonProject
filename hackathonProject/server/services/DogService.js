@@ -13,17 +13,17 @@ class DogService {
         return newDog
     }
 
-    // async editDog(dogId, updates) {
-    //     const originalDog = await dbContext.Dogs.findById(dogId)
+    async editDog(dogId, updates) {
+        const originalDog = await dbContext.Dogs.findById(dogId)
 
-    //     if (!originalDog) throw new Error('Unable to find dog at the following id: ${dogId}')
+        if (!originalDog) throw new Error('Unable to find dog at the following id: ${dogId}')
 
-    //     originalDog.description = updates.description || originalDog.description
-    //     originalDog.imgUrl = updates.imgUrl || ''
+        originalDog.description = updates.description || originalDog.description
+        originalDog.imgUrl = updates.imgUrl || ''
 
-    //     await originalDog.save()
-    //     return originalDog
-    // }
+        await originalDog.save()
+        return originalDog
+    }
 }
 
 
