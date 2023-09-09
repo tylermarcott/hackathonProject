@@ -17,7 +17,7 @@ export class DogWatchersController extends BaseController {
         try {
             const watcherId = request.params.watcherId
             const message = await dogWatcherService.removeDogWatcher
-            (watcherId, request.userInfo)
+                (watcherId, request.userInfo)
             response.send(message)
         } catch (error) {
             next(error)
@@ -40,6 +40,16 @@ export class DogWatchersController extends BaseController {
             const query = req.query
             const watcher = await dogWatcherService.getDogWatcher(query)
             res.send(watcher)
+        } catch (error) {
+            next(error)
+        }
+    }
+    async editDogWatcher(response, request, next) {
+        try {
+            const updates = request.body
+            const watcherId = request.params.accountId
+            const editedDog = await dogWatcherService.editDogWatcher(watcherId, updates)
+            response.send(editedDog)
         } catch (error) {
             next(error)
         }
