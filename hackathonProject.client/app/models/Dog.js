@@ -18,7 +18,6 @@ export class Dog {
           class="img-fluid">
         </div>
         <h1>${this.name}</h1>
-        <h3>${this.powers}</h3>
         <p>${this.description}</p>
       </div>
     `
@@ -26,11 +25,16 @@ export class Dog {
   get activeTemplate() {
     return `
       <div class="col-6">
+        
                   <img src="https://media.istockphoto.com/id/155142977/photo/superhero-dog.jpg?s=612x612&w=0&k=20&c=FAT_CltluCbS87CBYBcoIvze1Pd5rtahaZWCfbfiftI=" alt="">
+                  <button class="btn btn-danger rounded"><i class="mdi mdi-thumb-up"></i></button>
+                  <button class="btn btn-danger rounded"><i class="mdi mdi-thumb-down"></i></button>
                 </div class="6">
-                <p>${this.name}</p>
+                <p class="fs-3">${this.name}</p>
                 <p>TYPE</p>
                 <p>${this.powers}</p>
+                 <img title="${this.profile.name}" class="profilePic" src="${this.profile.picture}"></img>
+                 <button class="addCommentButton btn btn-secondary">Add a Comment</button>
                 <p>COMMENTS</p>
               </div>
     `
