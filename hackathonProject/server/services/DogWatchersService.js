@@ -14,6 +14,7 @@ class DogWatcherService {
         return watcher
     }
 
+    ///update and sync
     async editDogWatcher(watcherId, updates) {
         const originalWatcher = await dbContext.Watchers.findById(watcherId)
 
