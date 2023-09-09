@@ -10,8 +10,8 @@ export const DogSchema = new Schema({
     accountId: { type: Schema.Types.ObjectId, ref: 'Account', required: true }
 }, { timestamps: true, toJSON: { virtuals: true } })
 
-DogSchema.virtual('account', {
-    localField: 'acountId',
+DogSchema.virtual('profile', {
+    localField: 'accountId',
     ref: 'Account',
     foreignField: '_id',
     justOne: true

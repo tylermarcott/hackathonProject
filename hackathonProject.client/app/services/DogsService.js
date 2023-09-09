@@ -10,8 +10,9 @@ class DogsService {
   }
 
   async createDog(formData) {
-    const res = api.post('api/dogs', formData)
+    const res = await api.post('api/dogs', formData)
     AppState.dogs.push(new Dog(res.data))
+    AppState.emit('dogs')
     console.log('made a new dog')
     console.log(AppState.dogs)
   }
