@@ -1,4 +1,5 @@
 import { AboutController } from "./controllers/AboutController.js";
+import { CommentController } from "./controllers/CommentController.js";
 import { DogsController } from "./controllers/DogsController.js";
 import { HomeController } from "./controllers/HomeController.js";
 import { ValuesController } from "./controllers/ValuesController.js";
@@ -11,7 +12,7 @@ import { AboutView } from "./views/AboutView.js";
 export const router = [
   {
     path: '',
-    controller: DogsController,
+    controller: [DogsController, CommentController],
     view: /*html*/`
     <div class="container-fluid">
     <section class="row" id="dogsList">

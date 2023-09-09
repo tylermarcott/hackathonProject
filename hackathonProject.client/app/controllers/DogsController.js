@@ -36,6 +36,8 @@ export class DogsController {
       let formData = getFormData(form)
       const newDog = await dogsService.createDog(formData)
       console.log(newDog)
+      // @ts-ignore
+      form.reset()
     } catch (error) {
       Pop.error(error)
     }
