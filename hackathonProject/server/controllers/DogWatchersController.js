@@ -32,4 +32,16 @@ export class DogWatchersController extends BaseController {
             next(error)
         }
     }
+
+    async editDogWatcher(response, request, next) {
+        try {
+            const updates = request.body
+            const watcherId = request.params.accountId
+            const editedDog = await dogWatcherService.editDogWatcher(watcherId, updates)
+
+            response.send(editedDog)
+        } catch (error) {
+            next(error)
+        }
+    }
 }

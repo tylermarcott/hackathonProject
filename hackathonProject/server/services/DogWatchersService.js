@@ -2,6 +2,7 @@ import { dbContext } from "../db/DbContext.js"
 
 // TODO Testing needed.
 class DogWatcherService {
+
     async getDogWatcher(query) {
         const watcher = await dbContext.Watchers.find(query).populate('profile dog')
         return watcher
@@ -11,6 +12,15 @@ class DogWatcherService {
         await watcher.populate('dog profile')
 
         return watcher
+    }
+
+    async editDogWatcher(watcherId, updates) {
+        const originalWatcher = await dbContext.Watchers.findById(watcherId)
+
+        originalWatcher.comment = updates.comment
+
+        await originalWatcher.save()
+        return originalWatcher
     }
 
 }
