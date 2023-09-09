@@ -44,6 +44,4 @@ export class DogWatchersController extends BaseController {
             next(error)
         }
     }
-
-
 }

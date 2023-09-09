@@ -3,16 +3,6 @@ import { BadRequest, Forbidden } from "../utils/Errors.js"
 
 // TODO Testing needed.
 class DogWatcherService {
-    async removeDogWatcher(watcherId, userInfo) {
-        const dogWatcherToRemove = await dbContext.Watchers.findById(watcherId).populate('')
-        if (!dogWatcherToRemove) throw new BadRequest('no Dog Watcher with this id: {watcherId}')
-
-        if (dogWatcherToRemove.accountId != userInfo.id) throw new Forbidden("You don't own this!")
-
-        await dogWatcherToRemove.remove()
-        return `you have unseen the ${dogWatcherToRemove.dog.name}`
-        // FIXME
-    }
     async getDogWatcher(query) {
         const watcher = await dbContext.Watchers.find(query).populate('profile dog')
         return watcher
@@ -22,6 +12,15 @@ class DogWatcherService {
         await watcher.populate('dog profile')
 
         return watcher
+    }
+
+    async editDogWatcher(watcherId, updates) {
+        const originalWatcher = await dbContext.Watchers.findById(watcherId)
+
+        originalWatcher.comment = updates.comment
+
+        await originalWatcher.save()
+        return originalWatcher
     }
 
 }
