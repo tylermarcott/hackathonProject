@@ -14,6 +14,7 @@ export class DogController extends BaseController {
             .get('', this.getDogs)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createDog)
+        // .put('/:dogId/dogs', this.editDog)
     }
 
     // TODO: put populate account back in once we get this fixed.
@@ -37,6 +38,8 @@ export class DogController extends BaseController {
             next(error)
         }
     }
+
+    // TODO: fix this fucking shit
 
     // async editDog(request, response, next) {
     //     try {

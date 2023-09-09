@@ -18,7 +18,8 @@ class DogService {
 
     //     if (!originalDog) throw new Error('Unable to find dog at the following id: ${dogId}')
 
-    //     originalDog.description = updates.description
+    //     originalDog.description = updates.description || originalDog.description
+    //     originalDog.imgUrl = updates.imgUrl || ''
 
     //     await originalDog.save()
     //     return originalDog
