@@ -14,6 +14,7 @@ export class DogController extends BaseController {
             .get('', this.getDogs)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createDog)
+            .put('/:dogId/dogs', this.editDog)
     }
 
     // TODO: put populate account back in once we get this fixed.
@@ -38,15 +39,17 @@ export class DogController extends BaseController {
         }
     }
 
-    // async editDog(request, response, next) {
-    //     try {
-    //         const updates = request.body
-    //         const dogId = request.params.dogId
-    //         const editedDog = await dogService.editDog(dogId, updates)
-    //         response.send(editedDog)
+    // TODO: fix this fucking shit
 
-    //     } catch (error) {
-    //         next(error)
-    //     }
-    // }
+    async editDog(request, response, next) {
+        try {
+            const updates = request.body
+            const dogId = request.params.dogId
+            const editedDog = await dogService.editDog(dogId, updates)
+            response.send(editedDog)
+
+        } catch (error) {
+            next(error)
+        }
+    }
 }

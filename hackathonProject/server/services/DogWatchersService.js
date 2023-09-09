@@ -1,6 +1,6 @@
 import { dbContext } from "../db/DbContext.js"
 
-// TODO Testing needed. 
+// TODO Testing needed.
 class DogWatcherService {
     async getDogWatcher(query) {
         const watcher = await dbContext.Watchers.find(query).populate('profile dog')
@@ -8,8 +8,7 @@ class DogWatcherService {
     }
     async createDogWatcher(body) {
         const watcher = await dbContext.Watchers.create(body)
-
-        await watcher.populate('dogs profile')
+        await watcher.populate('dog profile')
 
         return watcher
     }
