@@ -6,16 +6,22 @@ import { commentsService } from "../services/CommentsService.js";
 
 export class CommentsController extends BaseController {
     constructor() {
-        super('api/birds')
+        super('api/dogs')
         this.router
             .get('', this.getComments)
-        .use(Auth0Provider.getAuthorizedUserInfo)
-        .post('', this.createComment)
-
+            .use(Auth0Provider.getAuthorizedUserInfo)
+            .post('', this.createComment)
 
     }
-    createComment(arg0, createComment) {
-
+    async createComment(request, response, next) {
+        try {
+            const body = request.body
+            body.accountId = request.userInfo.id
+            const comment = await commentsService.createComment(body)
+            request.send(comment)
+        } catch (error) {
+            next(error)
+        }
     }
     async getComments(request, response, next) {
         try {
