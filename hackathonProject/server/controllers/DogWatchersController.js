@@ -11,6 +11,18 @@ export class DogWatchersController extends BaseController {
             .get('', this.getDogWatcher)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createDogWatcher)
+            .delete('', this.removeDogWatcher)
+    }
+    async removeDogWatcher(request, response, next) {
+        try {
+            const watcherId = request.params.watcherId
+            const message = await dogWatcherService.removeDogWatcher
+            (watcherId, request.userInfo)
+            response.send(message)
+        } catch (error) {
+            next(error)
+        }
+
     }
     async createDogWatcher(request, response, next) {
         try {
@@ -32,4 +44,6 @@ export class DogWatchersController extends BaseController {
             next(error)
         }
     }
+
+
 }
