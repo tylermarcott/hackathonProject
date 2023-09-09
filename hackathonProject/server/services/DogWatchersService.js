@@ -1,6 +1,6 @@
 import { dbContext } from "../db/DbContext.js"
 
-
+// TODO Testing needed. 
 class DogWatcherService {
     async getDogWatcher(query) {
         const watcher = await dbContext.Watchers.find(query).populate('profile dog')
@@ -15,6 +15,8 @@ class DogWatcherService {
     }
 
 }
+
+
 
 
 export const dogWatcherService = new DogWatcherService()
