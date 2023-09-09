@@ -11,6 +11,7 @@ export class DogWatchersController extends BaseController {
             .get('', this.getDogWatcher)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createDogWatcher)
+            .put('/:watcherId', this.editDogWatcher)
             .delete('', this.removeDogWatcher)
     }
     async removeDogWatcher(request, response, next) {
