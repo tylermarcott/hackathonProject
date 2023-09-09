@@ -18,7 +18,7 @@ export class CommentsController extends BaseController {
             const body = request.body
             body.accountId = request.userInfo.id
             const comment = await commentsService.createComment(body)
-            request.send(comment)
+            response.send(comment)
         } catch (error) {
             next(error)
         }
