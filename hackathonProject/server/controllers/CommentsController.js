@@ -6,11 +6,11 @@ import { commentsService } from "../services/CommentsService.js";
 
 export class CommentsController extends BaseController {
     constructor() {
-        super('api/birds')
+        super('api/comments')
         this.router
             .get('', this.getComments)
-        .use(Auth0Provider.getAuthorizedUserInfo)
-        .post('', this.createComment)
+            .use(Auth0Provider.getAuthorizedUserInfo)
+            .post('', this.createComment)
 
 
     }
