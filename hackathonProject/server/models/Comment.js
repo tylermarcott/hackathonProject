@@ -5,7 +5,7 @@ export const CommentSchema = new Schema({
     body: { type: String, maxlength: 100, required: true },
     accountId: { type: Schema.Types.ObjectId, required: true },
     dogId: { type: Schema.Types.ObjectId, required: true },
-    watcherId: { type: Schema.Types.ObjectId, required: true }
+    // watcherId: { type: Schema.Types.ObjectId, required: true }
 
 }, { timestamps: true, JSON: { virtuals: true } })
 
