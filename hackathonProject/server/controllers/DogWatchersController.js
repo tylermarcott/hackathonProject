@@ -8,7 +8,7 @@ export class DogWatchersController extends BaseController {
         super('api/dogwatchers')
         this.router
 
-            .get('', this.getDogWatcher)
+
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createDogWatcher)
             .put('/:dogWatcherId', this.editDogWatcher)
@@ -36,15 +36,7 @@ export class DogWatchersController extends BaseController {
         }
     }
 
-    async getDogWatcher(req, res, next) {
-        try {
-            const query = req.query
-            const watcher = await dogWatcherService.getDogWatcher(query)
-            res.send(watcher)
-        } catch (error) {
-            next(error)
-        }
-    }
+
     async editDogWatcher(request, response, next) {
         try {
             const updates = request.body

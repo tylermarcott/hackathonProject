@@ -36,6 +36,16 @@ body {
     padding: 1rem;
 }
 
+.comment-picture {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.villain {
+    border: solid red 2px;
+}
+
 #nav-title {
     color: var(--red) !important;
 }

@@ -1,4 +1,5 @@
 import { dbContext } from "../db/DbContext.js"
+import { BadRequest } from "../utils/Errors.js"
 
 
 class DogService {
@@ -23,6 +24,17 @@ class DogService {
 
         await originalDog.save()
         return originalDog
+    }
+
+    async deleteDog(accountId, dogId) {
+        const deletedDog = await dbContext.Dogs.findById(dogId)
+        if (deletedDog.accountId == accountId) {
+            await deletedDog.delete()
+            return `deleted the Dog with id: ${dogId}`
+        }
+        else {
+            return new BadRequest('You are not the poster of this dog spotting')
+        }
     }
 }
 

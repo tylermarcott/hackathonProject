@@ -7,17 +7,18 @@ import { setHTML } from "../utils/Writer.js"
 
 function _drawComments() {
   let content = ``
-  AppState.activeComments = AppState.comments.map(comment => comment.id == AppState.activeDog.id)
-  AppState.activeComments.forEach(comment => content += comment.commentTemplate)
+  // AppState.activeComments = AppState.comments.filter(comment => comment.dogId == AppState.activeDog.id)
+  AppState.comments.forEach(comment => content += comment.commentTemplate)
+  console.log(AppState.activeComments)
   setHTML('comments', content)
 }
 
 
 export class CommentController {
   constructor() {
-    this.getComments()
     console.log('This is the comment controller')
-    AppState.on('activeDog', _drawComments)
+    AppState.on('activeDog', this.getComments)
+    AppState.on('comments', _drawComments)
   }
 
 
@@ -28,6 +29,8 @@ export class CommentController {
       let formData = getFormData(form)
       const newComment = await commentService.addComment(formData, dogId)
       console.log(newComment)
+      // @ts-ignore
+      form.reset()
     } catch (error) {
       Pop.error(error)
     }

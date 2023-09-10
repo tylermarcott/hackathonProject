@@ -1,5 +1,6 @@
 import { dbContext } from "../db/DbContext.js"
 import { BadRequest, Forbidden } from "../utils/Errors.js"
+import { Logger, logger } from "../utils/Logger.js"
 
 class DogWatcherService {
     async removeDogWatcher(watcherId, userInfo) {
@@ -13,8 +14,9 @@ class DogWatcherService {
         return `you have unseen the ${dogWatcherToRemove.dog.name}`
 
     }
-    async getDogWatcher(query) {
-        const watcher = await dbContext.Watchers.find(query).populate('profile dog')
+    async getDogWatcher(dogId) {
+        const watcher = await dbContext.Watchers.find({ dogId }).populate('profile')
+        logger.log(watcher)
         return watcher
     }
     async createDogWatcher(body) {

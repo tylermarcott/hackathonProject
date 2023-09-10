@@ -8,11 +8,14 @@ class CommentService {
     formData.dogId = dogId
     console.log('This is the Form Data:', formData)
     const res = await api.post('api/dogwatchers', formData)
+    AppState.comments.push(new Comment(res.data))
+    AppState.emit('comments')
     console.log(res.data)
   }
 
   async getComments() {
-    const res = await api.get('api/dogwatchers')
+    const dogId = AppState.activeDog.id
+    const res = await api.get(`api/dogs/${dogId}/dogwatchers`)
 
     console.log(res.data)
     AppState.comments = res.data.map(comment => new Comment(comment))

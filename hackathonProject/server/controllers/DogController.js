@@ -2,6 +2,7 @@ import { Auth0Provider } from "@bcwdev/auth0provider"
 import { dogService } from "../services/DogService.js"
 import BaseController from "../utils/BaseController.js"
 import { Logger } from "../utils/Logger.js"
+import { dogWatcherService } from "../services/DogWatchersService.js"
 
 
 export class DogController extends BaseController {
@@ -12,9 +13,11 @@ export class DogController extends BaseController {
             // middleware goes here
 
             .get('', this.getDogs)
+            .get('/:dogId/dogwatchers', this.getDogWatcher)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createDog)
             .put('/:dogId', this.editDog)
+            .delete('/:dogId', this.deleteDog)
     }
 
     // TODO: put populate account back in once we get this fixed.
@@ -39,6 +42,16 @@ export class DogController extends BaseController {
         }
     }
 
+    async getDogWatcher(req, res, next) {
+        try {
+            const dogId = req.params.dogId
+            const watcher = await dogWatcherService.getDogWatcher(dogId)
+            res.send(watcher)
+        } catch (error) {
+            next(error)
+        }
+    }
+
 
     async editDog(request, response, next) {
         try {
@@ -47,6 +60,18 @@ export class DogController extends BaseController {
             const editedDog = await dogService.editDog(dogId, updates)
             response.send(editedDog)
 
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async deleteDog(req, res, next) {
+        try {
+            const body = req.body
+            body.accountId = req.userInfo.id
+            const dogId = req.params.dogId
+            const deletedDogMessage = await dogService.deleteDog(body.accountId, dogId)
+            res.send(deletedDogMessage)
         } catch (error) {
             next(error)
         }

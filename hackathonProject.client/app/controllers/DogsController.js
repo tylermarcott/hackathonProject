@@ -15,8 +15,9 @@ function _drawActiveDog() {
 }
 export class DogsController {
   constructor() {
+    this.getDogs()
     AppState.on('dogs', _drawDogs)
-    AppState.on('account', this.getDogs)
+    // AppState.on('account', this.getDogs)
     AppState.on('activeDog', _drawActiveDog)
     console.log('This is the thing Dogs')
   }
@@ -45,5 +46,10 @@ export class DogsController {
 
   setActiveDog(dogId) {
     dogsService.setActiveDog(dogId)
+  }
+
+  async deleteDog(dogId) {
+    await dogsService.deleteDog(dogId)
+    console.log('deleted the dog')
   }
 }
